@@ -1,0 +1,41 @@
+<script>history.pushState({}, '', 'admin?entite=timbre')</script>
+<section>
+  <h1>{{ titre|upper }}</h1> 
+  {% if oUtilConn.utilisateur_profil in [constant('Utilisateur::PROFIL_ADMINISTRATEUR'),
+                                         constant('Utilisateur::PROFIL_EDITEUR')] %}
+  <a href="admin?entite=timbre&action=a">Ajouter un Timbre</a>
+  {% endif %}
+  <p class="messageRetourAction {{ classRetour }}">{{ messageRetourAction }}&nbsp;</p>   
+  <div class="g films">
+    <div class="t">Id</div>
+    <div class="t">Titre</div>
+    <div class="t">Description</div>
+    <div class="t">Annee</div>
+    <div class="t">Pays</div>
+    <div class="t">Etat</div>
+    <div class="t">Lord Favoris</div>
+
+    <div class="t">Actions</div>
+  {% for timbre in timbres %}
+    <div class="l">
+      <div class="c dr">{{ timbre.timbre_id }}</div>
+      <div class="c   ">{{ timbre.timbre_Titre }}</div>
+      <div class="c mi">{{ timbre.timbre_Description }}</div>
+      <div class="c dr">{{ timbre.timbre_Annee }}</div>
+      <div class="c   ">{{ timbre.timbre_Pays }}</div>
+      <div class="c dr">{{ timbre.timbre_Etat }}</div>
+      <div class="c dr">{{ timbre.timbre_lord_favoris }}</div>
+      
+      <div class="c   ">
+        <a href="admin?entite=timbre&action=m&timbre_id={{ timbre.timbre_id }}">modifier</a>
+        {% if not timbre.nb_realisateurs and not timbre.nb_acteurs and not timbre.nb_pays 
+              and oUtilConn.utilisateur_profil in [constant('Utilisateur::PROFIL_ADMINISTRATEUR'),
+                                                   constant('Utilisateur::PROFIL_EDITEUR')] %}
+        <span class="confirmer" data-href="admin?entite=timbre&action=s&timbre_id={{ timbre.timbre_id }}">supprimer</span>
+        {% endif %}
+      </div>
+    </div>
+  {% endfor %} 
+  </div>
+</section>
+{{ include("admin/modaleSuppression.twig") }}

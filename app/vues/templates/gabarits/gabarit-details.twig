@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ titre }}</title>
+   <link rel="stylesheet" href="css/style.css">
+   <link href="https://fonts.googleapis.com/css2?family=Gloock&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+</head>
+
+<body>
+  <header>
+
+    <div class="nav-primaire"> 
+        <span class="logo"><img src="img/auction.png" alt="img-logo"> Stampee</span>
+        <nav class="nav-menu">
+            <a href="index">Lord Stampee</a>
+            <a href="galerie">Enchères</a>
+            <a href="">Archives</a>
+            <a href="">Collections<img src="img/triangle-copie.png" alt="fleche" class="fleche-bas"></a>
+        </nav>
+        <div class="login">
+          <span id="utilisateur">{{ oUtilConn.utilisateur_prenom }} {{ oUtilConn.utilisateur_nom }}</span>
+          <span id="creerCompte" class="{{     oUtilConn ? 'cache' : '' }}">Créer un compte</span>
+          <span class="bouton" id="connecter"   class="{{     oUtilConn ? 'cache' : '' }}">Connecter</span>
+          <span id="deconnecter" class="{{ not oUtilConn ? 'cache' : '' }}">Déconnecter</span>
+          <span class="cache" data-js-userid="{{ oUtilConn.utilisateur_id }}"></span>
+        </div>
+    </div>
+            <div class="texte-sur-image">
+            <img src="img/carrousel4.webp" alt="carrousel4">
+            <div>
+                <h1>Des timbres d'exception à portée de clics</h1>
+                <p>Nous sommes fiers de vous offrir une expérience unique pour élargir votre collection</p>
+                <a class="bouton mission" href="">notre mission</a>
+            </div>
+    </div>        
+  <div class="nav-secondaire accueil">
+            <section> 
+                <div>
+                    <img src="img/united-kingdom.png" alt="drapeau">
+                    <span>EN</span>
+                    <img src="img/triangle-copie.png" alt="fleche" class="fleche-bas">  
+                </div>
+            </section> 
+           <section>
+                    <input type="text" aria-label=" " placeholder="recherche de timbres, collections, etc ...">
+                    <img src="img/research.png" alt="chercher">
+            </section>
+        </div>
+  </header>
+  <main>
+
+  {{ include(templateMain) }}
+
+  </main>
+  <footer>
+        <section class="nav-primaire footer"> 
+            <div>
+                <span class="logo"><img src="img/auction.png" alt="img-logo"> Stampee</span>
+                <div class="adresse">
+                    <p>Le Plus Grand Palace </p>
+                    <small><i>1 king street, H2K2Z9</i></small><br>
+                    <small><i>Londres, Angletterre</i></small>  
+                </div> 
+            </div>
+    
+            <div>
+                <a href="">Biographie du Lord Stampee</a>
+                <a href="">Enchères</a>
+                <a href="">Archives</a>
+                <a href="">Collections</a>
+            </div>
+            
+            <div>
+                <a href="">Politique de retour</a>
+                <a href="">Aide</a>
+                <a href="">Accéssibilité</a>
+                <a href="">FAQ</a>
+            </div>
+            
+            <div>
+                <a href="">À propos de nous</a>
+                <a href="">Carrières</a>
+                <a href="">Historique</a>
+                <a href="">Blogue</a>
+            </div>
+            
+        </section>
+        <section class="socialMedia">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="40" height="40">
+                <path fill="rgb(0,0,0)" d="M13.892 24.123h3.357v-8.124h2.239l.297-2.799h-2.536l.003-1.402c0-.73.07-1.121 1.117-1.121h1.4v-2.8h-2.24c-2.69 0-3.637 1.358-3.637 3.642V13.2h-1.677V16h1.677v8.123z"/>
+                <path fill="rgb(0,0,0)" d="M16 1c8.271 0 15 6.729 15 15s-6.729 15-15 15S1 24.271 1 16 7.729 1 16 1m0-1C7.163 0 0 7.163 0 16s7.163 16 16 16 16-7.163 16-16S24.837 0 16 0z"></path>
+              </svg>
+              
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="126.444 2.281 589 589">
+                <circle cx="420.944" cy="296.781" r="294.5" fill="rgb(0,0,0)"/>
+                <path fill="#FFFFFF" d="M609.773 179.634c-13.891 6.164-28.811 10.331-44.498 12.204 16.01-9.587 28.275-24.779 34.066-42.86a154.78 154.78 0 0 1-49.209 18.801c-14.125-15.056-34.267-24.456-56.551-24.456-42.773 0-77.462 34.675-77.462 77.473 0 6.064.683 11.98 1.996 17.66-64.389-3.236-121.474-34.079-159.684-80.945-6.672 11.446-10.491 24.754-10.491 38.953 0 26.875 13.679 50.587 34.464 64.477a77.122 77.122 0 0 1-35.097-9.686v.979c0 37.54 26.701 68.842 62.145 75.961-6.511 1.784-13.344 2.716-20.413 2.716-4.998 0-9.847-.473-14.584-1.364 9.859 30.769 38.471 53.166 72.363 53.799-26.515 20.785-59.925 33.175-96.212 33.175-6.25 0-12.427-.373-18.491-1.104 34.291 21.988 75.006 34.824 118.759 34.824 142.496 0 220.428-118.052 220.428-220.428 0-3.361-.074-6.697-.236-10.021a157.855 157.855 0 0 0 38.707-40.158z"/>
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="49.605 0 2834.65 2834.649">
+                <circle cx="1466.93" cy="1417.324" r="1417.324" fill="rgb(0,0,0)"/>
+                <path fill="#FFFFFF" d="M1892.128 726.379h-850.395c-147.639 0-265.749 118.11-265.749 265.749v850.394c0 147.639 118.11 265.748 265.749 265.748h850.395c147.638 0 265.749-118.109 265.749-265.748V992.127c0-147.638-118.112-265.748-265.749-265.748zm76.772 159.449h29.527V1122.048h-236.221v-236.22H1968.9zm-696.851 389.765c41.338-59.056 118.11-100.395 194.882-100.395s153.544 41.339 194.882 100.395c29.527 41.338 47.244 88.582 47.244 141.732 0 135.826-112.205 242.126-242.126 242.126-129.922 0-242.126-106.299-242.126-242.126-.001-53.15 17.716-100.394 47.244-141.732zm750.001 566.929c0 70.867-59.056 129.922-129.922 129.922h-850.395c-70.866 0-129.922-59.055-129.922-129.922v-566.929h206.693c-17.717 41.338-29.527 94.488-29.527 141.732 0 206.693 171.26 377.953 377.953 377.953s377.953-171.26 377.953-377.953c0-47.244-11.812-100.395-29.527-141.732h206.692l.002 566.929z"/>
+            </svg> 
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="40px" height="40px" fill="rgb(0,0,0)">
+                <path d="M6.977 15.532a2.791 2.791 0 0 0 2.791 2.792 2.859 2.859 0 0 0 2.9-2.757L12.7 3h2.578A4.8 4.8 0 0 0 19.7 7.288v2.995a4.676 4.676 0 0 1-.443.022 4.8 4.8 0 0 1-4.02-2.172v7.4a5.469 5.469 0 1 1-5.469-5.469c.114 0 .226.01.338.017v2.7a2.909 2.909 0 0 0-.338-.034 2.791 2.791 0 0 0-2.791 2.785Z">
+                </path>
+            </svg>
+                   
+        </section>
+    </footer>
+
+  
+    
+</body>
+</html>

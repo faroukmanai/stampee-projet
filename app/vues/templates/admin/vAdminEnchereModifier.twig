@@ -1,0 +1,39 @@
+<section>
+  <h1>{{ titre|upper }}</h1>
+  
+  {% if erreurs %}
+  <div class="erreurs">
+    <ul>
+      {% for erreur in erreurs %}
+        <li>{{ erreur }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+
+  <form method="POST" action="admin?entite=enchere&action=m&enchere_id={{ enchere.enchere_id }}" enctype="multipart/form-data">
+
+    <label>Date Debut</label>
+    <input type='date' name="Date_debut" value="{{ enchere.Date_debut|default('') }}">
+    <span>&nbsp;{{ erreurs.Date_debut }}</span>
+
+    <label>Date Fin</label>
+    <input type='date' name="Date_fin" value="{{ enchere.Date_fin|default('') }}">
+    <span>&nbsp;{{ erreurs.Date_fin }}</span>
+
+    <label>Prix Plancher</label>
+    <input name="Prix_plancher" type="number" value="{{ enchere.Prix_plancher|default('') }}">
+    <span>&nbsp;{{ erreurs.Prix_plancher }}</span>
+
+    <label>Timbre</label>
+    <select name="Timbre_id">
+      <option value="">Sélectionnez un timbre</option>
+      {% for timbre in timbres %}
+        <option value="{{ timbre.timbre_id }}" {% if timbre.timbre_id == enchere.Timbre_id %}selected{% endif %}>{{ timbre.timbre_Titre }}</option>
+      {% endfor %}
+    </select>
+    <span>&nbsp;{{ erreurs.Timbre_id }}</span>
+
+    <input type="submit" value="Modifier">
+  </form>
+</section>

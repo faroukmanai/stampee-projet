@@ -1,0 +1,26 @@
+.bouton{
+    text-decoration: none;
+    padding:15px;
+    border-radius: 30px;
+    font-size: 22px;
+    background-color: rgb(25, 25, 128);
+    color: white;
+}
+
+.bouton.miser{
+    font-size: 18px;
+    padding:10px 35px;
+    color: rgb(25, 25, 128);
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(25, 25, 128);
+    width:max-content;
+}
+
+.bouton.mission{
+    width:max-content;
+    padding:10px 35px;
+    background-color: transparent;
+    color: white;
+    border:1px solid white;
+    margin-top: 30px;
+}

@@ -1,0 +1,48 @@
+.texte-sur-image {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	overflow: hidden;
+	min-height: 60vh;
+    background-color: rgb(24, 24, 24);
+	
+}
+.texte-sur-image h1{
+	font-size: 28px;
+}
+.texte-sur-image div {
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+	position: relative;
+	max-width: 70ch;
+    color:white;
+}
+
+
+.texte-sur-image img {
+	position: absolute;
+	object-fit: cover;
+	height: 100%;
+	width: 100%;
+	opacity: .6;
+}
+
+.texte-sur-image.aide .bouton{
+    background-color: white;
+    border: 2px solid rgb(0, 0, 0);
+    width: max-content;
+    margin: 0 auto;
+    color: black;
+}
+.texte-sur-image.aide{
+	text-align: center;
+	margin:0;
+}
+
+@media only screen and (max-width: 600px) {
+	.texte-sur-image div{
+		padding: 0 20px;
+	}
+}

@@ -1,0 +1,82 @@
+ 
+<main>
+        <details open>
+            <summary>Filtre</summary>
+            <aside class="filtre">
+                <section>
+                    <h2>Trending</h2>
+                    <div>
+                        <a href="">Meilleures ventes</a>
+                        <a href="">Nouveaux Timbres</a>
+                    </div>
+                </section>
+                <hr>
+                <section>
+                    <h2>Collections</h2>
+                    <div>
+                        <a href="">Collection Royale</a>
+                        <a href="">Collection Anglaise</a>
+                        <a href="">Collection Internationale</a>
+                    </div>
+                </section>
+            <hr>
+                <section>
+                    <h2>État des timbres</h2>
+                    <div>
+                        <div class="filtre-checkbox">
+                            <label for="parfait">Parfait</label>
+                            <input type="checkbox" id="parfait" name="scales" checked>   
+                        </div>
+                        <div class="filtre-checkbox">
+                            <label for="moyen">Moyen</label>
+                            <input type="checkbox" id="moyen" name="scales">   
+                        </div>
+                        <div class="filtre-checkbox">
+                            <label for="endommage">Endommagé</label>
+                            <input type="checkbox" id="endommage" name="scales">   
+                        </div>
+                    </div>
+                </section>
+                <hr>
+                <section>
+                    <h2>Prix</h2>
+                    <div class="prix">
+                        <input type="text" aria-label=" " name="prix-min" class="prix-min" placeholder="Min">
+                        <span>à</span>
+                        <input type="text" aria-label=" " name="prix-max" class="prix-min" placeholder="Max">  
+                    </div>
+                </section>
+            </aside>
+        </details>
+<div class="galerie-container"> 
+<h1>Mes enchéres</h1>        
+<section class="galerie">
+    {% for timbre in timbres %}
+        <div class="carte">
+            <img src="{{ timbre.timbre_Affiche }}" alt="carte-timbre">
+            <div> 
+                <h3>{{ timbre.timbre_Titre }}</h3>
+                <p>{{ timbre.timbre_Pays }}, {{ timbre.timbre_Annee }}</p>
+                <p>État: {{ timbre.timbre_Etat }}</p>
+                {% for enchere in encheres %}
+                {% if enchere.Timbre_id == timbre.timbre_id %}
+                    <small>Enchère: <i class="date-fin" data-date-debut="{{ enchere.Date_debut|date('Y-m-d\TH:i:s') }}" data-date-fin="{{ enchere.Date_fin|date('Y-m-d\TH:i:s') }}">{{ enchere.Date_debut|date('F j, Y ') }} | {{ enchere.Date_fin|date('F j, Y') }}</i></small>         
+                    <p class="etat-enchere"></p>
+                {% endif %}
+                {% endfor %}
+            </div>
+            {% for enchere in encheres %}
+                {% if enchere.Timbre_id == timbre.timbre_id %}
+                    <a href="">Supprimer</a>
+                {% endif %}
+            {% endfor %}
+            </div>
+
+    {% endfor %}
+</section>
+
+</div>
+</div>
+     
+</main>
+   

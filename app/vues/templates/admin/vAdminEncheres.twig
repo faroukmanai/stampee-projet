@@ -1,0 +1,34 @@
+<section>
+  <h1>{{ titre|upper }}</h1> 
+  {% if oUtilConn.utilisateur_profil in [constant('Utilisateur::PROFIL_ADMINISTRATEUR'),
+                                         constant('Utilisateur::PROFIL_EDITEUR')] %}
+  <a href="admin?entite=enchere&action=a">Ajouter une Enchere</a>
+  {% endif %}
+  <p class="messageRetourAction {{ classRetour }}">{{ messageRetourAction }}&nbsp;</p>   
+  <div class="g utilisateurs">
+    <div class="t">Id Enchere</div>
+    <div class="t">Id Timbre</div>
+    <div class="t">Date de début</div>
+    <div class="t">Date de Fin</div>
+    <div class="t">Prix</div>
+    <div class="t">Actions</div>
+      {% for enchere in encheres %}
+        <div class="l">
+          <div class="c dr">{{ enchere.enchere_id }}</div>
+          <div class="c dr">{{ enchere.Timbre_id }}</div>
+          <div class="c   ">{{ enchere.Date_debut }}</div>
+          <div class="c mi">{{ enchere.Date_fin}}</div>
+          <div class="c dr">{{ enchere.Prix_plancher }}</div>
+
+          <div class="c   ">
+            {% if not enchere.nb_realisateurs and not enchere.nb_acteurs and not enchere.nb_pays 
+                  and oUtilConn.utilisateur_profil in [constant('Utilisateur::PROFIL_ADMINISTRATEUR'),
+                                                      constant('Utilisateur::PROFIL_EDITEUR')] %}
+            <span class="confirmer" data-href="admin?entite=enchere&action=s&enchere_id={{ enchere.enchere_id }}">supprimer</span>
+            {% endif %}
+          </div>
+        </div>
+      {% endfor %}
+  </div>
+</section>
+{{ include("admin/modaleSuppression.twig") }}

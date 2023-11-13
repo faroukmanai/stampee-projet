@@ -1,0 +1,24 @@
+/*creation dun conteneur qui contient les media sociaux tjrs alignés */
+.socialMedia {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    gap: 15px;
+    padding-top: 20px;
+    padding-bottom: 80px;
+}
+
+/*logos de media sociaux en bas de page*/
+
+.socialMedia svg:hover{
+    opacity:100%;
+}
+.socialMedia svg{
+    opacity:75%;
+}
+@media only screen and (max-width: 600px) {
+    .socialMedia {
+        padding-top: 0px;
+        padding-bottom: 40px;
+    } 
+}

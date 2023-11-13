@@ -1,0 +1,39 @@
+.filtre{
+    max-width:200px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+.filtre > section > div {
+    display:flex;
+    flex-direction: column;
+    gap:15px;
+}
+.filtre a{
+    color:black;
+}
+.filtre h2{
+    padding-bottom: 20px;
+    font-size: 18px;
+}
+.filtre input[type='text']{
+    box-sizing: border-box;
+    padding: 8px;
+    width:80px;
+    height: 30px;
+}
+.filtre .prix{
+    flex-direction: row;
+    align-items: center;
+}
+.filtre-checkbox {
+    display: flex;
+    align-items: center;
+    gap:5px;
+ }
+ 
+@media only screen and (max-width: 600px) {
+    .filtre{
+        max-width: 100%;
+    }
+}

@@ -1,0 +1,31 @@
+.infolettre{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    flex-direction: column;
+    gap:10px;
+    margin-top:60px;
+    margin-bottom: 60px;
+}
+.infolettre h1{
+    font-size: 42px;
+    padding-bottom: 20px;
+}
+.infolettre .bouton{
+    width: max-content;  
+    margin: 0 auto;
+} 
+.infolettre input{
+    box-sizing: border-box;
+    border: none;
+    padding:20px;
+    height: 50px;
+    width:450px;
+    margin: 0 auto;
+    border: 1px solid rgb(121, 121, 121);
+}
+@media only screen and (max-width: 600px) {
+    .infolettre input{
+        max-width:350px;
+    }
+}

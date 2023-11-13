@@ -1,0 +1,46 @@
+<section>
+  <h1>{{ titre|upper }}</h1>
+  
+  <form method="POST" action="admin?entite=timbre&action=a" enctype="multipart/form-data">
+
+    <label>Titre</label>
+    <input name="timbre_Titre" value="{{ timbre.timbre_Titre }}">
+    <span>&nbsp;{{ erreurs.timbre_Titre }}</span>
+
+    <label>Année de Timbre</label>
+    <input name="timbre_Annee" type="number" value="{{ timbre.timbre_Annee | default('now' | date('Y')) }}"
+           min="10" max="{{ 'now' | date('Y') }}">
+    <span>&nbsp;{{ erreurs.timbre_Annee }}</span>
+
+    <label>Description</label>
+    <textarea name="timbre_Description" rows="3">{{ timbre.timbre_Description }}</textarea>
+    <span>&nbsp;{{ erreurs.timbre_Description }}</span>
+
+    <label>Pays</label>
+    <select name="timbre_Pays">
+      <option value="" selected>Sélectionnez un Pays</option>
+      <option value="Canada" >Canada</option>
+      <option value="USA" >USA</option>
+      <option value="United_kingdom" >United kingdom</option>  
+    </select>
+    <span>&nbsp;{{ erreurs.timbre_Pays }}</span>
+
+ 
+
+    <label>Etat</label>
+    <select name="timbre_Etat">
+      <option value="Parfait" >Parfait</option>
+      <option value="Moyen"  > Moyen </option>
+      <option value="Endommagé">Endommagé</option>
+     </select>
+    <span>&nbsp;{{ erreurs.timbre_Etat }}</span>
+
+  
+    <label>Affiche au format jpg</label>
+    <input name="timbre_Affiche" type="file">
+    <span>&nbsp;{{ erreurs.timbre_Affiche }}</span>
+    
+    <input type="submit" value="Envoyer">
+</form>
+  </div>
+</section>
